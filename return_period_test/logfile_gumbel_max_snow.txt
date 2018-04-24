@@ -1,0 +1,35 @@
+Vid frågor kring dessa resultat eller programmet som skapat dem, kontakta Johan Södling
+SMHI-användaren som skapat filerna i denna mapp:  a002209
+Matlab-version som använts:  9.3.0.713579 (R2017b)
+.m-fil som anropats för att få fram dessa resultat: \\winfs-proj\data\proj\au_metod\Workspace\Johan.Sodling\ML_WORK\gev_analyser_workbench\write_log_file.m
+Tidsstämpel för när programmet kördes:  2018-01-08 - 13:45:02
+
+Extremvärdes-typ:  max
+Antal extremvärden från början:  57
+Antal icke-nan extremvärden:  57
+Använd sannolikhetsfördelning: gumbel
+ML-parametrar:  0.99591   0.0032319
+KS-test:  0.99875 (tumregel: över 0.95 så passar inte data till fördelning)
+
+
+R2-anpassning:  0.1364
+Cramér–von Mises:  1.0391
+Anderson-Darling:  0.046935
+Kuipers test:  0.49125
+
+
+Återkomsttider:
+1 snow : -Inf, 95%-konf (-Inf, 0.99268)
+2 snow : 0.9971, 95%-konf (0.99595, 0.99839)
+5 snow : 1.0008, 95%-konf (0.99894, 1.0027)
+10 snow : 1.0032, 95%-konf (1.0006, 1.0059)
+20 snow : 1.0055, 95%-konf (1.002, 1.0092)
+25 snow : 1.0063, 95%-konf (1.0023, 1.0103)
+50 snow : 1.0085, 95%-konf (1.0032, 1.014)
+100 snow : 1.0108, 95%-konf (1.0038, 1.0179)
+200 snow : 1.013, 95%-konf (1.0042, 1.022)
+300 snow : 1.0143, 95%-konf (1.0043, 1.0245)
+500 snow : 1.016, 95%-konf (1.0044, 1.0277)
+1000 snow : 1.0182, 95%-konf (1.0045, 1.0321)
+10000 snow : 1.0257, 95%-konf (1.0046, 1.0469)
+100000 snow : 1.0331, 95%-konf (1.0046, 1.0618)
