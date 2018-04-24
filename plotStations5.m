@@ -22,8 +22,11 @@ for ev = 1:size(eventHeight,2) %For each event
     % Calculate the correlation coefficient and significance for the event
     [R{1,ev}, P{1,ev}] = corrcoef(A{1,ev},'Rows','Complete');
     R{1,ev}= abs(R{1,ev});  % Correlation coefficient
-    P{1,ev}= P{1,ev};       % Significance level
+    %Create mask in order to show correlation figure with nans where
+    %correlation is not significant
     P{1,ev}(P{1,ev}>0.05) = nan; % Non significant cells are nan
+    Pmask{1,ev} = P{1,ev};
+    Pmask{1,ev}(~isnan(Pmask{1,ev})) =1; % Significant cells are 1
 end
 
 % Plot the events
@@ -37,22 +40,13 @@ for e = 1:size(eventHeight,2) % for all events
     
     figure(e+10)
     % Take correlation coefficients of that event
-    data = R{1,e};
+    data = R{1,e}.*Pmask{1,e};
     imAlpha=ones(size(data));
     imAlpha(isnan(data))=0;
     imagesc(data,'AlphaData',imAlpha);
     grid on
     caxis([0 1])
     
-    
-    figure(e+20)
-    % Take significance level 
-    data2 = P{1,e};
-    imAlpha2=ones(size(data2));
-    imAlpha2(isnan(data2))=0;
-    imagesc(data2,'AlphaData',imAlpha2);
-    caxis([0.005 0.05])
-    grid on
 end
 % Put datetick and ticklabels according to stationposition
 for e = 1:size(eventHeight,2) % for events
@@ -80,20 +74,7 @@ for e = 1:size(eventHeight,2) % for events
     set(gcf,'color','w')
     savefig(['Figures/Correlation/','Figure',num2str(e+10),'.fig'])
     export_fig(gcf,['Figures/Correlation/','Figure',num2str(e+10)],'-pdf')
-    
-    figure(e+20)
-    xticks([1:size(eventHeight,1)])
-    labels = char (F_TXT);
-    labels = labels(:,1:4);
-    xticklabels(labels)
-    yticks([1:size(eventHeight,1)])
-    yticklabels(labels)
-    title(['Significance ', datestr(exportEvents(1,e),'dd-mmm-yyyy')])
-    colorbar
-    xtickangle(45)
-    set(gcf,'color','w')
-    savefig(['Figures/Correlation/','Figure',num2str(e+20),'.fig'])
-    export_fig(gcf,['Figures/Correlation/','Figure',num2str(e+20)],'-pdf')
+   
    
 end
 
